@@ -1,3 +1,7 @@
+// 2. ATM
+// Asks for action "Please tell me wat to do": + | -
+// Asks for amount "How much? "
+// Print out current ballance "Current ballance is: 100"
 import { accessSync, readFileSync, writeFileSync } from 'fs';
 import readline from 'readline';
 

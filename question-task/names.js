@@ -1,3 +1,9 @@
+// 1. Task
+// Print out the name ex: "The curent name is: Jānis"
+// Ask for a new name: "Please enter a new name: " (enters "Anna")
+// Print out the name ex: "The new name is: Anna"
+// exit
+
 import { accessSync, readFileSync, writeFileSync } from 'fs';
 import readline from 'readline';
 
