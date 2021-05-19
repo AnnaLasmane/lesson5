@@ -9,11 +9,11 @@ const rl = readline.createInterface({
 const filePath = `${process.cwd()}/names.json`;
 
 
-const storeData = (name) => {
+const storeData = (newName) => {
     try {
         const jsonObject = readFileSync(filePath, 'utf8');
         const decoded = JSON.parse(jsonObject);
-        decoded.name = name;
+        decoded.name = newName;
         writeFileSync(filePath, JSON.stringify(decoded));
         console.log(`The new name is ${decoded.name} `);
     } catch (err) {
