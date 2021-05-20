@@ -14,16 +14,24 @@ const filePath = `${process.cwd()}/balance.json`;
 
 
 rl.question('Do you want to add (+) money or withdraw (-) money? ', (answer) => {
-    if (answer !== '+' && answer !== '-') {
+    if (answer !== '+' &&
+        answer !== '-') {
         console.log('Please enter only + or - !');
         rl.close();
+        return;
     } else {
         rl.question('How much? ', (amountToChange) => {
+            const answerAsNumber = parseFloat(amountToChange);
+            if (isNaN(answerAsNumber)) {
+                console.log('Not a number entered');
+                rl.close();
+                return;
+            }
             try {
                 accessSync(filePath);
                 const jsonAmount = readFileSync(filePath, 'utf8');
                 const decodedAmount = JSON.parse(jsonAmount);
-
+                console.log(decodedAmount);
                 if (answer === '+') {
                     decodedAmount.balance = decodedAmount.balance + parseInt(amountToChange);
                 } else {
@@ -36,6 +44,7 @@ rl.question('Do you want to add (+) money or withdraw (-) money? ', (answer) => 
 
             } catch (err) {
                 console.error('Something went wrong', err);
+                rl.close();
             };
         })
     }

@@ -17,14 +17,14 @@ const filePath = `${process.cwd()}/names.json`;
 
 const storeData = (newName) => {
     try {
+        accessSync(filePath);
         const jsonObject = readFileSync(filePath, 'utf8');
         const decoded = JSON.parse(jsonObject);
         decoded.name = newName;
         writeFileSync(filePath, JSON.stringify(decoded));
         console.log(`The new name is ${decoded.name} `);
     } catch (err) {
-        console.error('Something wrong. The error is: ');
-        console.error(err);
+        console.error('Something wrong. The error is: ', err);
     };
 };
 
