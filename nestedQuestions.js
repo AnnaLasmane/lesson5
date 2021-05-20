@@ -22,7 +22,7 @@ const rl = readline.createInterface({
 
 new Promise((fulfil, reject) => {
     rl.question('Enter your first name: ', (firstName) => {
-        if (firstName === ' ') {
+        if (firstName === '') {
             reject('First name was empty');
             return;
         }
@@ -51,8 +51,8 @@ new Promise((fulfil, reject) => {
 }).then((output) => {
     console.log(`Your data is ${output}`);
 
-}).catch(() => {
-    console.log('Invalid name');
+}).catch((errorMessage) => {
+    console.log(errorMessage);
 
 }).finally(() => {
     rl.close();
